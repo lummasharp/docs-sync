@@ -1,0 +1,17 @@
+<Project Sdk="WixToolset.Sdk/5.0.2">
+
+  <PropertyGroup>
+    <OutputName>DocsSync-Setup</OutputName>
+    <Platform>x64</Platform>
+    <Version Condition="'$(Version)' == ''">1.0.0</Version>
+    <PublishDir Condition="'$(PublishDir)' == ''">..\publish\</PublishDir>
+    <DefineConstants>Version=$(Version);PublishDir=$(PublishDir)</DefineConstants>
+    <!-- per-user install: ICE38/ICE64/ICE91 assume per-machine layouts -->
+    <SuppressIces>ICE38;ICE64;ICE91</SuppressIces>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="WixToolset.Util.wixext" Version="5.0.2" />
+  </ItemGroup>
+
+</Project>

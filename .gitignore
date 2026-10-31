@@ -1,0 +1,8 @@
+bin/
+obj/
+publish/
+dist/
+*.user
+.vs/
+check.txt
+report.txt

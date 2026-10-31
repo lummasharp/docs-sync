@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+    <!-- only for the tray icon (NotifyIcon) -->
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>DocsSync</AssemblyName>
+    <RootNamespace>DocsSync</RootNamespace>
+    <ApplicationIcon>assets\DocsSync.ico</ApplicationIcon>
+
+    <Version>1.0.0</Version>
+    <Product>Docs Sync</Product>
+    <Description>Keeps Obsidian notes in sync with the code they describe.</Description>
+    <Authors>lummasharp</Authors>
+    <Copyright>© 2026 lummasharp</Copyright>
+  </PropertyGroup>
+
+  <!-- Release builds: one self-contained exe, so users don't need .NET installed -->
+  <PropertyGroup Condition="'$(RuntimeIdentifier)' != ''">
+    <SelfContained>true</SelfContained>
+    <PublishSingleFile>true</PublishSingleFile>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    <DebugType>none</DebugType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="installer\**;publish\**" />
+    <None Remove="installer\**;publish\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Anthropic" Version="13.3.0" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" Version="8.0.0" />
+  </ItemGroup>
+
+</Project>
